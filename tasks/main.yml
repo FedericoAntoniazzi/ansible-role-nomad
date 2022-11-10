@@ -1,0 +1,12 @@
+---
+- name: Install Nomad
+  when: state == "present"
+  block:
+    - name: Install Nomad on node
+      ansible.builtin.include_tasks: "install.yml"
+    - name: Configure nodes
+      ansible.builtin.include_tasks: "configure-node.yml"
+
+- name: Uninstall Nomad
+  when: state == "absent"
+  ansible.builtin.include_tasks: "uninstall.yml"

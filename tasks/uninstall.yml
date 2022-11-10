@@ -1,0 +1,9 @@
+---
+- name: Uninstall Nomad (Debian)
+  ansible.builtin.include_tasks: "uninstall-{{ ansible_os_family }}.yml"
+
+- name: Stop Nomad service
+  ansible.builtin.service:
+    name: nomad
+    state: stopped
+    enabled: false

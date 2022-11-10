@@ -1,0 +1,27 @@
+galaxy_info:
+  author: Federico Antoniazzi
+  description: Install and configure Hashicorp Nomad
+
+  license: MIT
+
+  min_ansible_version: "2.1"
+
+  platforms:
+    - name: Debian
+      versions:
+        - buster   # 10
+        - bullseye # 11
+        - bookworm # 12
+    - name: Ubuntu
+      versions:
+        - focal   # 20.04
+        - groovy  # 20.10
+        - hirsute # 21.04
+        - impish  # 21.10
+        - jammy   # 22.04
+
+  galaxy_tags:
+    - nomad
+    - hashicorp
+
+dependencies: []

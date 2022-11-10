@@ -1,0 +1,13 @@
+---
+- name: Add HashiCorp GPG Key
+  ansible.builtin.apt_key:
+    url: "{{ apt_key_url }}"
+
+- name: Make sure HashiCorp Linux repository is present
+  ansible.builtin.apt_repository:
+    repo: "{{ apt_repository }}"
+
+- name: Install Nomad
+  ansible.builtin.apt:
+    name: "nomad={{ nomad_version }}-{{ apt_build_number }}"
+    state: "{{ state }}"

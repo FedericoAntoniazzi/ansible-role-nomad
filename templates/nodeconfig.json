@@ -1,0 +1,16 @@
+{
+	"name": "{{ node_name | default(ansible_nodename) }}",
+	"region": "{{ region | default('global') }}",
+	"datacenter": "{{ datacenter | default('dc1') }}",
+
+	"data_dir": "{{ data_dir | default('/opt/nomad/data') }}",
+	"bind_addr": "{{ bind_address | default('0.0.0.0') }}",
+
+	"server": {
+		"enabled": "{{ 'server' in node_roles }}"
+	},
+
+	"client": {
+		"enabled": "{{ 'client' in node_roles }}"
+	},
+}

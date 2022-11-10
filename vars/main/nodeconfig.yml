@@ -1,0 +1,17 @@
+---
+### Nomad config file
+
+# Specifies a local directory used to store agent state
+data_dir: "/opt/nomad/data"
+# Specifies which address the Nomad agent should bind to for network services
+bind_address: 0.0.0.0
+
+# Specifies the region the Nomad agent is a member of
+region: "global"
+# Specifies the data center of the local agent.
+# All members of a datacenter should share a local LAN connection.
+datacenter: "dc1"
+
+# Specifies the roles for the current role
+# It's a list of roles, values can be: 'server', 'client'
+node_roles: ['server', 'client']
