@@ -1,0 +1,12 @@
+---
+# Conversion map from ansible_architecture to dpkg architecture
+deb_architectures:
+  aarch64: "arm64"
+  x86_64: "amd64"
+
+# URL to the HashiCorp GPG key
+apt_key_url: https://apt.releases.hashicorp.com/gpg
+# HashiCorp linux repository for Debian based distros
+apt_repository: "deb [arch={{ deb_architectures[ansible_architecture] }}] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
+# Build number to append to the nomad version
+apt_build_number: 1

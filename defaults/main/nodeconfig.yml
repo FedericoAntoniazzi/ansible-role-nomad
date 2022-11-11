@@ -1,0 +1,34 @@
+---
+# Nomad node configuration
+# Reference: https://developer.hashicorp.com/nomad/docs/configuration
+
+# Specifies the name of the local node.
+node_name: "{{ ansible_hostname }}"
+# Specifies the region the Nomad agent is a member of
+region: "global"
+# Specifies the data center of the local agent.
+# All members of a datacenter should share a local LAN connection.
+datacenter: "dc1"
+
+# Specifies a local directory used to store agent state
+data_dir: "/opt/nomad/data"
+
+# Specifies which address the Nomad agent should bind to for network services
+bind_addr: "0.0.0.0"
+
+# Specifies the verbosity of logs the Nomad agent will output.
+# Values are: 'DEBUG', 'INFO', 'WARN'.
+log_level: "INFO"
+
+# Specifies the directory to use for looking up plugins.
+plugin_dir: "{{ data_dir }}/plugins"
+
+# Specifies the network ports used for different services required by the Nomad agent.
+ports:
+  # The port used to run the HTTP server
+  http: 4646
+  # The port used for internal RPC communication between agents and servers,
+  # and for inter-server traffic for the consensus algorithm (raft)
+  rpc: 4647
+  # The port used for the gossip protocol for cluster membership
+  serf: 4648
