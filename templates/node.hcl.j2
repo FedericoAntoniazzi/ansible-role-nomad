@@ -1,0 +1,17 @@
+name       = "{{ node_name }}"
+region     = "{{ region }}"
+datacenter = "{{ datacenter }}"
+
+data_dir = "{{ data_dir }}"
+
+bind_addr = "{{ bind_addr }}"
+
+log_level = "{{ log_level }}"
+
+plugin_dir = "{{ plugin_dir }}"
+
+ports {
+	http = "{{ ports.http | int }}"
+	rpc = "{{ ports.rpc | int }}"
+	serf = "{{ ports.serf | int }}"
+}
