@@ -1,9 +1,26 @@
 ---
 - name: Upload Nomad node configuration
+  notify: Restart Nomad
   ansible.builtin.template:
     src: node.hcl.j2
-    dest: /etc/nomad.d/node.hcl
+    dest: "{{ node_config_path }}"
     owner: "nomad"
     group: "nomad"
     mode: 0644
+
+- name: Configure servers
   notify: Restart Nomad
+  block:
+    - name: Upload server configuration
+      ansible.builtin.template:
+        src: server.hcl.j2
+        dest: "{{ server_config_path }}"
+        owner: "nomad"
+        group: "nomad"
+        mode: 0644
+      when: "'server' in node_role"
+    - name: Remove the server configuration if the node is not a server
+      ansible.builtin.file:
+        path: "{{ server_config_path }}"
+        state: absent
+      when: "'server' not in node_role"

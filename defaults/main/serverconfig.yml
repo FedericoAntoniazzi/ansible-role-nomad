@@ -1,0 +1,5 @@
+# Specifies the number of server nodes to wait for before bootstrapping.
+bootstrap_expect: 1
+
+# Specifies the directory to use for server-specific data, including the replicated log
+server_data_dir: "{{ data_dir }}/server"

@@ -2,6 +2,10 @@
 # Nomad node configuration
 # Reference: https://developer.hashicorp.com/nomad/docs/configuration
 
+# Configure the Nomad agent role
+# Available values: 'server'
+node_role: "server"
+
 # Specifies the name of the local node.
 node_name: "{{ ansible_hostname }}"
 # Specifies the region the Nomad agent is a member of
