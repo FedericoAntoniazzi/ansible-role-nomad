@@ -1,0 +1,5 @@
+# Specifies an array of addresses to the Nomad servers this client should join
+client_servers: []
+
+# Specifies the directory to use to store client state
+client_state_dir: "{{ data_dir }}/client"

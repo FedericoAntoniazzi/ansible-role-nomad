@@ -1,2 +1,3 @@
 node_config_path: "/etc/nomad.d/node.hcl"
 server_config_path: "/etc/nomad.d/server.hcl"
+client_config_path: "/etc/nomad.d/client.hcl"

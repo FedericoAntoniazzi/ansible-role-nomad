@@ -24,3 +24,20 @@
         path: "{{ server_config_path }}"
         state: absent
       when: "'server' not in node_role"
+
+- name: Configure clients
+  notify: Restart Nomad
+  block:
+    - name: Upload client configuration
+      ansible.builtin.template:
+        src: server.hcl.j2
+        dest: "{{ client_config_path }}"
+        owner: "nomad"
+        group: "nomad"
+        mode: 0644
+      when: "'client' in node_role"
+    - name: Remove the client configuration if the node is not a client
+      ansible.builtin.file:
+        path: "{{ client_config_path }}"
+        state: absent
+      when: "'client' not in node_role"
