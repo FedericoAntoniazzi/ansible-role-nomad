@@ -2,13 +2,19 @@
 
 Install HashiCorp Nomad on Linux hosts.
 
-Role Variables
---------------
+## Role Variables
+All variables have been taken from the [official documentation page](https://developer.hashicorp.com/nomad/docs/configuration). There you can find a complete reference for the variables scope and usage.
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+### Generic configuration
+[`nomad.yml`](./defaults/main/nomad.yml)
+### Node configuration
+[`nodeconfig.yml`](./defaults/main/nodeconfig.yml)
+### Client configuration
+[`clientconfig.yml`](./defaults/main/clientconfig.yml)
+### Server configuration
+[`serverconfig.yml`](./defaults/main/serverconfig.yml)
 
-Example Playbook
-----------------
+## Example Playbook
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
@@ -21,12 +27,10 @@ Including an example of how to use your role (for instance, with variables passe
     - nomad
 ```
 
-License
--------
+## License
 
 MIT
 
-Author Information
-------------------
+## Author Information
 
 FedericoAntoniazzi ([website](https://federicoantoniazzi.dev))
