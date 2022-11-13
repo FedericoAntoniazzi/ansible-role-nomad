@@ -36,3 +36,6 @@ ports:
   rpc: 4647
   # The port used for the gossip protocol for cluster membership
   serf: 4648
+
+# Enable the Nomad agent's web UI
+enable_ui: true

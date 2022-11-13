@@ -15,3 +15,7 @@ ports {
 	rpc = "{{ ports.rpc | int }}"
 	serf = "{{ ports.serf | int }}"
 }
+
+ui {
+	enabled = "{{ enable_ui | bool }}"
+}
