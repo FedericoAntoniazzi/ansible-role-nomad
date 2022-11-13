@@ -11,11 +11,11 @@ log_level = "{{ log_level }}"
 plugin_dir = "{{ plugin_dir }}"
 
 ports {
-	http = "{{ ports.http | int }}"
-	rpc = "{{ ports.rpc | int }}"
-	serf = "{{ ports.serf | int }}"
+	http = {{ ports.http | int }}
+	rpc = {{ ports.rpc | int }}
+	serf = {{ ports.serf | int }}
 }
 
 ui {
-	enabled = "{{ enable_ui | bool }}"
+	enabled = {{ enable_ui | bool | lower }}
 }
