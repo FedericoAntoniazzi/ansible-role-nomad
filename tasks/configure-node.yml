@@ -30,7 +30,7 @@
   block:
     - name: Upload client configuration
       ansible.builtin.template:
-        src: server.hcl.j2
+        src: client.hcl.j2
         dest: "{{ client_config_path }}"
         owner: "nomad"
         group: "nomad"
