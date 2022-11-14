@@ -20,9 +20,9 @@ Including an example of how to use your role (for instance, with variables passe
 
 ```yaml
 - name: Install Nomad
-  hosts: nomad_nodes
-  vars_files:
-    - ./vars/nomad.yml
+  hosts: nomad
+  vars:
+    nomad_roles: ['server', 'client']
   roles:
     - nomad
 ```
