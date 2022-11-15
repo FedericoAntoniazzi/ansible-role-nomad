@@ -1,5 +1,5 @@
 ---
-- name: Install Nomad (Debian)
+- name: Install Nomad
   ansible.builtin.include_tasks: "install-{{ ansible_os_family }}.yml"
 
 - name: Start and enable Nomad service
