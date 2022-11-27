@@ -11,3 +11,4 @@
   ansible.builtin.apt:
     name: "nomad={{ nomad_version }}-{{ apt_build_number }}"
     state: "{{ state }}"
+    allow_downgrade: "{{ allow_downgrade }}"
