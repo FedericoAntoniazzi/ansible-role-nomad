@@ -2,11 +2,23 @@
 - name: Install Nomad
   when: state in ['present', 'latest']
   block:
-    - name: Install Nomad on node
-      ansible.builtin.include_tasks: "install.yml"
+    - name: Install Nomad
+      ansible.builtin.include_tasks: "install-{{ ansible_os_family }}.yml"
+    - name: Start nomad service
+      ansible.builtin.service:
+        name: nomad
+        state: started
+        enabled: true
     - name: Configure nodes
       ansible.builtin.include_tasks: "configure-node.yml"
 
 - name: Uninstall Nomad
   when: state == "absent"
-  ansible.builtin.include_tasks: "uninstall.yml"
+  block:
+    - name: Uninstall Nomad
+      ansible.builtin.include_tasks: "uninstall-{{ ansible_os_family }}.yml"
+    - name: Stop Nomad service
+      ansible.builtin.service:
+        name: nomad
+        state: stopped
+        enabled: false
