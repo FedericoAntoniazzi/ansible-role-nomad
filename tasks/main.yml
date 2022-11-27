@@ -10,7 +10,7 @@
         state: started
         enabled: true
     - name: Configure nodes
-      ansible.builtin.include_tasks: "configure-node.yml"
+      ansible.builtin.include_tasks: "configure.yml"
 
 - name: Uninstall Nomad
   when: state == "absent"
