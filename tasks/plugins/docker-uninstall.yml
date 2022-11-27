@@ -3,3 +3,12 @@
   ansible.builtin.file:
     path: "{{ docker_config_path }}"
     state: absent
+
+# Ansible does not provide a way to delete a user from a group,
+# the solution implemented has been taken from
+# https://stackoverflow.com/a/68445912
+- name: Remove nomad user from docker group
+  ansible.builtin.command: "gpasswd -d docker nomad"
+  register: command_result
+  changed_when: "not 'is not a member of' in command_result.stderr"
+  failed_when: false

@@ -6,3 +6,9 @@
     owner: "nomad"
     group: "nomad"
     mode: 0644
+
+- name: Add nomad user to docker group
+  ansible.builtin.user:
+    name: nomad
+    groups: docker
+    append: true
