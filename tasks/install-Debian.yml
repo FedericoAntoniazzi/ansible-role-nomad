@@ -7,8 +7,18 @@
   ansible.builtin.apt_repository:
     repo: "{{ apt_repository }}"
 
+- name: Allow Nomad to be upgraded
+  ansible.builtin.dpkg_selections:
+    name: nomad
+    selection: install
+
 - name: Install Nomad
   ansible.builtin.apt:
     name: "nomad={{ nomad_version }}-{{ apt_build_number }}"
     state: "{{ state }}"
     allow_downgrade: "{{ allow_downgrade }}"
+
+- name: Prevent Nomad from being upgraded
+  ansible.builtin.dpkg_selections:
+    name: nomad
+    selection: hold
