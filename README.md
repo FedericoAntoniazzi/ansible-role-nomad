@@ -1,20 +1,20 @@
 # federicoantoniazzi.nomad
 
-Install HashiCorp Nomad on Linux hosts.
+Install and configure Hashicorp Nomad
 
 ## Role Variables
 All variables have been taken from the [official documentation page](https://developer.hashicorp.com/nomad/docs/configuration). There you can find a complete reference for the variables scope and usage.
 
 ### Generic configuration
-[`nomad.yml`](./defaults/main/nomad.yml)
+[`nomad.yml`](https://github.com/FedericoAntoniazzi/ansible-role-nomad/blob/master/defaults/main/nomad.yml)
 ### Node configuration
-[`nodeconfig.yml`](./defaults/main/nodeconfig.yml)
+[`nodeconfig.yml`](https://github.com/FedericoAntoniazzi/ansible-role-nomad/blob/master/defaults/main/nodeconfig.yml)
 ### Client configuration
-[`clientconfig.yml`](./defaults/main/clientconfig.yml)
+[`clientconfig.yml`](https://github.com/FedericoAntoniazzi/ansible-role-nomad/blob/master/defaults/main/clientconfig.yml)
 ### Server configuration
-[`serverconfig.yml`](./defaults/main/serverconfig.yml)
+[`serverconfig.yml`](https://github.com/FedericoAntoniazzi/ansible-role-nomad/blob/master/defaults/main/serverconfig.yml)
 ### Plugin configuration
-[`docker.yml`](./defaults/main/docker.yml)
+[`docker.yml`](https://github.com/FedericoAntoniazzi/ansible-role-nomad/blob/master/defaults/main/docker.yml)
 
 ## Example Playbook
 
