@@ -39,3 +39,7 @@ ports:
 
 # Enable the Nomad agent's web UI
 enable_ui: true
+
+# List of task drivers to enable
+# Possible values: "docker"
+task_drivers: []

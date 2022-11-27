@@ -1,0 +1,9 @@
+plugin "docker" {
+	config {
+		extra_labels = [{% for label in docker_plugin_extra_labels %} "{{ label | string }}", {% endfor %}]
+
+		volumes {
+			enabled = {{ docker_plugin_volumes_enabled | bool | lower }}
+		}
+	}
+}

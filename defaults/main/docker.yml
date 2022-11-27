@@ -1,0 +1,14 @@
+# Reference: https://developer.hashicorp.com/nomad/docs/drivers/docker#plugin-options
+
+# Extra labels to add to Docker containers
+docker_plugin_extra_labels:
+  - job_name
+  - job_id
+  - task_group_name
+  - task_name
+  - namespace
+  - node_name
+  - node_id
+
+# Allow tasks to bind host paths inside their container and use volume drivers
+docker_plugin_volumes_enabled: true
