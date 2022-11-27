@@ -1,6 +1,6 @@
 ---
 # Whether to install or uninstall Nomad
-# Possible values: 'present', 'absent'
+# Possible values: 'present', 'latest', 'absent'
 state: present
 
 # Version of the nomad package to install

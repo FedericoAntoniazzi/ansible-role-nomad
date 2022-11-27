@@ -12,11 +12,18 @@
     name: nomad
     selection: install
 
-- name: Install Nomad
+- name: "Install Nomad {{ nomad_version }}"
   ansible.builtin.apt:
     name: "nomad={{ nomad_version }}-{{ apt_build_number }}"
     state: "{{ state }}"
     allow_downgrade: "{{ allow_downgrade }}"
+  when: state == "present"
+
+- name: Install Nomad latest
+  ansible.builtin.apt:
+    name: nomad
+    state: "{{ state }}"
+  when: state == "latest"
 
 - name: Prevent Nomad from being upgraded
   ansible.builtin.dpkg_selections:

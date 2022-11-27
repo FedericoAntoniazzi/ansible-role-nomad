@@ -1,6 +1,6 @@
 ---
 - name: Install Nomad
-  when: state == "present"
+  when: state in ['present', 'latest']
   block:
     - name: Install Nomad on node
       ansible.builtin.include_tasks: "install.yml"
