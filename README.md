@@ -13,6 +13,8 @@ All variables have been taken from the [official documentation page](https://dev
 [`clientconfig.yml`](./defaults/main/clientconfig.yml)
 ### Server configuration
 [`serverconfig.yml`](./defaults/main/serverconfig.yml)
+### Plugin configuration
+[`docker.yml`](./defaults/main/docker.yml)
 
 ## Example Playbook
 
