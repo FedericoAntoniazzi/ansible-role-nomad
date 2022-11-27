@@ -45,16 +45,9 @@
 - name: Configure Docker task driver
   notify: Restart Nomad
   block:
-    - name: Upload docker configuration
-      ansible.builtin.template:
-        src: docker.hcl.j2
-        dest: "{{ docker_config_path }}"
-        owner: "nomad"
-        group: "nomad"
-        mode: 0644
+    - name: Configure Docker task driver
+      ansible.builtin.include_tasks: "plugins/docker-install.yml"
       when: "'docker' in task_drivers"
     - name: Remove the docker configuration if the plugin has been disabled
-      ansible.builtin.file:
-        path: "{{ docker_config_path }}"
-        state: absent
+      ansible.builtin.include_tasks: "plugins/docker-uninstall.yml"
       when: "'docker' not in task_drivers"

@@ -1,0 +1,8 @@
+---
+- name: Upload docker configuration
+  ansible.builtin.template:
+    src: docker.hcl.j2
+    dest: "{{ docker_config_path }}"
+    owner: "nomad"
+    group: "nomad"
+    mode: 0644

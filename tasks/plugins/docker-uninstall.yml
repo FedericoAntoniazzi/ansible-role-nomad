@@ -1,0 +1,5 @@
+---
+- name: Remove the docker configuration if the plugin has been disabled
+  ansible.builtin.file:
+    path: "{{ docker_config_path }}"
+    state: absent
