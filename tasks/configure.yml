@@ -51,3 +51,15 @@
     - name: Remove the docker configuration if the plugin has been disabled
       ansible.builtin.include_tasks: "plugins/docker-uninstall.yml"
       when: "'docker' not in task_drivers"
+
+# The podman task driver is available only for linux hosts
+- name: Configure Podman task driver
+  notify: Restart Nomad
+  when: "ansible_system == 'Linux'"
+  block:
+    - name: Configure Podman task driver
+      ansible.builtin.include_tasks: "plugins/podman-install.yml"
+      when: "'podman' in task_drivers"
+    - name: Remove the podman configuration if the plugin has been disabled
+      ansible.builtin.include_tasks: "plugins/podman-uninstall.yml"
+      when: "'podman' not in task_drivers"
