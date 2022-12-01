@@ -1,0 +1,13 @@
+plugin "nomad-driver-podman" {
+	config {
+		disable_log_collection = {{ podman_plugin_disable_log_collection | bool | lower }}
+		gc {
+			container = {{ podman_plugin_gc_container | bool | lower }}
+		}
+		recover_stopped = {{ podman_plugin_recover_stopped | bool | lower }}
+
+		volumes {
+			enabled = {{ podman_plugin_volumes_enabled | bool | lower }}
+		}
+	}
+}

@@ -1,0 +1,25 @@
+---
+- name: Make sure plugin_dir exists in the remote host(s)
+  ansible.builtin.file:
+    path: "{{ plugin_dir }}"
+    state: directory
+    owner: "nomad"
+    group: "nomad"
+    mode: 0755
+
+- name: Download nomad-driver-podman
+  ansible.builtin.unarchive:
+    src: "{{ podman_plugin_url }}"
+    dest: "{{ plugin_dir }}"
+    remote_src: true
+    owner: "nomad"
+    group: "nomad"
+    mode: 0700
+
+- name: Upload podman driver configuration
+  ansible.builtin.template:
+    src: docker.hcl.j2
+    dest: "{{ podman_config_path }}"
+    owner: "nomad"
+    group: "nomad"
+    mode: 0644

@@ -1,0 +1,18 @@
+# Reference: https://developer.hashicorp.com/nomad/plugins/drivers/podman
+
+# Version of the podman task driver to install
+podman_plugin_version: "0.4.1"
+# nomad-driver-podman is a "community" plugin and it's downloadable as a zip archive.
+# The default is the official mirror
+podman_plugin_url: "https://releases.hashicorp.com/nomad-driver-podman/{{ podman_plugin_version }}/nomad-driver-podman_{{ podman_plugin_version }}_linux_{{ deb_architectures[ansible_architecture] }}.zip"
+# Where the plugin executable is located
+podman_plugin_path: "{{ plugin_dir }}/nomad-driver-podman"
+
+# Setting this to true will disable Nomad logs collection of Podman tasks. 
+podman_plugin_disable_log_collection: false
+# This option can be used to disable Nomad from removing a container when the task exits.
+podman_plugin_gc_container: true
+# Allows the driver to start and reuse a previously stopped container after a Nomad client restart.
+podman_plugin_recover_stopped: true
+# Allows tasks to bind host paths (volumes) inside their container.
+podman_plugin_volumes_enabled: true
