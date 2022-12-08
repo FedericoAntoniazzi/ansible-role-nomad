@@ -1,5 +1,20 @@
 plugin "docker" {
 	config {
+		endpoint = "{{ docker_plugin_endpoint | string }}"
+
+		gc {
+			image = {{ docker_plugin_gc_image | bool | lower }}
+			image_delay = "{{ docker_plugin_gc_image_delay | string }}"
+
+			container = {{ docker_plugin_gc_container | bool | lower }}
+			dangling_containers {
+				enabled = {{ docker_plugin_dangling_containers_enabled | bool | lower }}
+				dry_run = {{ docker_plugin_dangling_containers_dry_run | bool | lower }}
+				period = "{{ docker_plugin_dangling_containers_period | string }}"
+				creation_grace = "{{ docker_plugin_dangling_containers_creation_grace | string }}"
+			}
+		}
+
 		extra_labels = [{% for label in docker_plugin_extra_labels %} "{{ label | string }}", {% endfor %}]
 
 		volumes {
