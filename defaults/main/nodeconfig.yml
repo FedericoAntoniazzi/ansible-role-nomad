@@ -43,3 +43,10 @@ enable_ui: true
 # List of task drivers to enable
 # Possible values: "docker"
 task_drivers: []
+
+# The host_volume stanza is used to make volumes available to jobs.
+# In this role, it's possibile to host_volumes by a list of name, path and read_only
+host_volumes: []
+# - name: "example"
+#   path: "/path/to/host/volume"
+#   read_only: false

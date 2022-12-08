@@ -1,4 +1,14 @@
 ---
+- name: Create host volumes
+  ansible.builtin.file:
+    path: "{{ item.path }}"
+    state: directory
+    owner: "nomad"
+    group: "nomad"
+    mode: '0755'
+    recurse: true
+  loop: "{{ host_volumes }}"
+
 - name: Upload Nomad node configuration
   notify: Restart Nomad
   ansible.builtin.template:
