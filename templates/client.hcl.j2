@@ -2,4 +2,12 @@ client {
 	enabled = true
 	servers = [{% for server in client_servers %} "{{ server | string }}", {% endfor %}]
 	state_dir = "{{ client_state_dir }}"
+
+	{% for volume in host_volumes -%}
+	host_volume "{{ volume.name }}" {
+		path = "{{ volume.path }}"
+		read_only = {{ volume.read_only | default(false) | bool | lower }}
+	}
+	{% endfor %}
+
 }
