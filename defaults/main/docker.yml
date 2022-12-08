@@ -1,5 +1,27 @@
 # Reference: https://developer.hashicorp.com/nomad/docs/drivers/docker#plugin-options
 
+# If using a non-standard socket, HTTP or another location, or if TLS is being used, docker.endpoint must be set.
+# If unset, Nomad will attempt to instantiate a Docker client using the DOCKER_HOST environment variable and then fall back to the default listen address for the given operating system.
+# The default value works on Unix platforms. If you are using windows, set it to npipe:////./pipe/docker_engine
+docker_plugin_endpoint: "unix:///var/run/docker.sock"
+
+# Changing this to false will prevent Nomad from removing images from stopped tasks.
+docker_plugin_gc_image: true
+# The delay controls how long Nomad will wait between an image being unused and deleting it.
+# If a task is received that uses the same image within the delay, the image will be reused.
+docker_plugin_gc_image_delay: "3m"
+# This option can be used to disable Nomad from removing a container when the task exits.
+# Under a name conflict, Nomad may still remove the dead container.
+docker_plugin_gc_container: true
+# Enables dangling container handling
+docker_plugin_dangling_containers_enabled: true
+# Only log dangling containers without cleaning them up.
+docker_plugin_dangling_containers_dry_run: false
+# A time duration that controls interval between Nomad scans for dangling containers.
+docker_plugin_dangling_containers_period: "5m"
+# Grace period after a container is created during which the GC ignores it.
+docker_plugin_dangling_containers_creation_grace: "5m"
+
 # Extra labels to add to Docker containers
 docker_plugin_extra_labels:
   - job_name
