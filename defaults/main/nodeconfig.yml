@@ -45,8 +45,16 @@ enable_ui: true
 task_drivers: []
 
 # The host_volume stanza is used to make volumes available to jobs.
-# In this role, it's possibile to host_volumes by a list of name, path and read_only
+# In this role, it's possibile to define host_volumes using a list of name, path and read_only
 host_volumes: []
 # - name: "example"
 #   path: "/path/to/host/volume"
 #   read_only: false
+
+# The host_network stanza is used to register additional host networks with the node that can be used when port mapping.
+# In this role, it's possibile to define host_network using a list of name, cidr, interface and reserved_ports
+host_networks: []
+# - name: private
+#   interface: eth0
+# - name: public
+#   reserved_ports: "22,80"
