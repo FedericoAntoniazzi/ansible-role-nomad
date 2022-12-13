@@ -7,17 +7,21 @@
   ansible.builtin.apt_repository:
     repo: "{{ apt_repository }}"
 
-- name: Allow Nomad to be upgraded
-  ansible.builtin.dpkg_selections:
-    name: nomad
-    selection: install
-
+# Make sure Nomad is present
 - name: "Install Nomad {{ nomad_version }}"
   ansible.builtin.apt:
     name: "nomad={{ nomad_version }}-{{ apt_build_number }}"
     state: "{{ state }}"
     allow_downgrade: "{{ allow_downgrade }}"
   when: state == "present"
+
+# If the latest version has to be installed,
+# then mark the package as upgradable, upgrade it, and finally set it as not upgradable
+- name: Allow Nomad to be upgraded
+  ansible.builtin.dpkg_selections:
+    name: nomad
+    selection: install
+  when: state == "latest"
 
 - name: Install Nomad latest
   ansible.builtin.apt:
@@ -29,3 +33,4 @@
   ansible.builtin.dpkg_selections:
     name: nomad
     selection: hold
+  when: state == "latest"
