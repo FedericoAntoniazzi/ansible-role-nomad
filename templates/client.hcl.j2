@@ -10,4 +10,12 @@ client {
 	}
 	{% endfor %}
 
+	{% for network in host_networks -%}
+	host_network "{{ network.name }}" {
+		cidr = "{{ network.cidr if network.get('cidr') else "" | string }}"
+		interface = "{{ network.interface if network.get('interface') else "" | string }}"
+		reserved_ports = "{{ network.reserved_ports if network.get('reserved_ports') else "" | string }}"
+	}
+	{% endfor %}
+
 }
