@@ -14,7 +14,8 @@ All variables have been taken from the [official documentation page](https://dev
 ### Server configuration
 [`serverconfig.yml`](https://github.com/FedericoAntoniazzi/ansible-role-nomad/blob/master/defaults/main/serverconfig.yml)
 ### Plugin configuration
-[`docker.yml`](https://github.com/FedericoAntoniazzi/ansible-role-nomad/blob/master/defaults/main/docker.yml)
+- [`docker.yml`](https://github.com/FedericoAntoniazzi/ansible-role-nomad/blob/master/defaults/main/docker.yml)
+- [`podman.yml`](https://github.com/FedericoAntoniazzi/ansible-role-nomad/blob/master/defaults/main/podman.yml)
 
 ## Example Playbook
 

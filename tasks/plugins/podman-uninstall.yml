@@ -1,0 +1,10 @@
+---
+- name: Remove the podman driver configuration if the plugin has been disabled
+  ansible.builtin.file:
+    path: "{{ podman_config_path }}"
+    state: absent
+
+- name: Remove the podman driver executable
+  ansible.builtin.file:
+    path: "{{ podman_plugin_path }}"
+    state: absent
